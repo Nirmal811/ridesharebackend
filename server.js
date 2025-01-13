@@ -23,9 +23,20 @@ const mongoose = require('mongoose');
 // Your MongoDB connection string
 const dbURI = 'mongodb+srv://nirmal811k:3CH7ecogu65mwUMV@cluster0.sxbcj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((error) => console.error('Connection error', error));
+const uri = dbURI; // Ensure this is set in your Render environment variables
+
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 10000, // Increase the timeout to 10 seconds
+  })
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+  });
 
 const PORT = 8000;
 app.listen(PORT, ()=>{
