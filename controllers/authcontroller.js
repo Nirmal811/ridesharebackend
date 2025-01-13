@@ -41,7 +41,7 @@ const registerHandler = async(req, res)=>
 
         console.log('JWT Token:', token);
 
-        sendmail(req.body.useremail,'Email verification from rideshare',`Please click the link below\nhttp://localhost:8000/api/v1/auth/verify/${token}`);
+        sendmail(req.body.useremail,'Email verification from rideshare',`Please click the link below\nhttps://ride-share-by-nk.onrender.com/api/v1/auth/verify/${token}`);
         res.status(200).send({Message:"Verification Mail Sent Successfully"});
     }
     else
