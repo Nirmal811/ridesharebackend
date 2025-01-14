@@ -7,11 +7,13 @@ app.use(cors());
 
 // Include route files
 const {authRouter} = require('./routes/authrouter');
+const {secretsRouter} = require('./routes/secretsrouter');
 // const rideRouter = require('./routes/riderouter');
 
 // Use routes
 app.use('/api/v1/auth', authRouter);
-// app.use('/api/v1/addrides', rideRouter);
+app.use('/api/v1/secret',secretsRouter);
+//app.use('/api/v1/addrides', rideRouter);
 
 app.get("/",(req,res)=>
 {
@@ -19,6 +21,7 @@ app.get("/",(req,res)=>
 })
 
 const mongoose = require('mongoose');
+//const { secretsRouter } = require('./routes/secretsrouter');
 
 // Your MongoDB connection string
 const dbURI = 'mongodb+srv://nirmal811k:3CH7ecogu65mwUMV@cluster0.sxbcj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
